@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            /* This will separate the three groups */
+            align-items: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+        .nav-group {
+            display: flex;
+        }
+
+        .nav-group.center {
+            justify-content: center;
+            flex-grow: 1;
+            /* This will allow the center group to take up more space */
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: calc(20% - 40px);
+            margin: 10px;
+            margin-top: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            /* Lift the product up slightly when hovered */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            /* A larger shadow for a "raised" effect on hover */
+        }
+
+        .product img {
+            width: 100%;
+            /* Make the image fill the container */
+            height: auto;
+            /* Maintain the aspect ratio */
+            border-radius: 8px 8px 0 0;
+            /* Round the top corners to match the container */
+            margin-bottom: 15px;
+            /* Space between the image and the text */
+        }
+
+        .product h2 {
+            color: #333;
+            /* Title color */
+            font-size: 1.5em;
+            /* Title size */
+        }
+
+        .product p {
+            color: #666;
+            /* Paragraph text color */
+            font-size: 1em;
+            /* Paragraph text size */
+        }
+
+        .product .price {
+            font-weight: bold;
+            color: #333;
+            /* Price color */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="nav-ul">
+            <!-- Group 1 (left-aligned) -->
+            <div class="nav-group left">
+                <li><a href="/" class="logo">Guy9Shop</a></li>
+            </div>
+
+            <!-- Group 2 (center-aligned) -->
+            <div class="nav-group center">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#water">Water</a></li>
+                <li><a href="#softdrink">Softdrink</a></li>
+                <li><a href="#alcohol">Alcohol</a></li>
+            </div>
+
+            <!-- Group 3 (right-aligned) -->
+            <div class="nav-group right">
+                {% if user.is_authenticated %}
+
+                <li><a href="#">Profile {{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+
+                {% else %}
+
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Sign up</a></li>
+
+                {% endif %}
+            </div>
+        </ul>
+    </nav>
+
+    {% block content %}
+    <!-- Default content goes here -->
+    {% endblock %}
+
+</body>
+
+</html>

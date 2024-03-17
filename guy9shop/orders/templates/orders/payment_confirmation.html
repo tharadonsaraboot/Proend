@@ -1,0 +1,21 @@
+{% extends "products/base.html" %}
+
+{% block content %}
+
+<style>
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+    }
+</style>
+
+<h2>Payment Confirmation</h2>
+<div class="products">
+    <div class="product">
+        <p>{{ message }}</p>
+        <p>Order ID: {{ order.id }}</p>
+        <a href="{% url 'product_list' %}">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

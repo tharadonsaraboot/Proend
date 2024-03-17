@@ -1,0 +1,35 @@
+[
+    {
+        "model": "products.product",
+        "pk": 1,
+        "fields": {
+            "name": "Classic Tee",
+            "description": "A soft and comfortable classic t-shirt.",
+            "price": "19.99",
+            "stock": 50,
+            "image": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "name": "Sleek Sports Watch",
+            "description": "A sleek watch perfect for everyday sport use.",
+            "price": "49.99",
+            "stock": 30,
+            "image": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "name": "Smartphone Case",
+            "description": "A durable case to protect your smartphone.",
+            "price": "15.99",
+            "stock": 100,
+            "image": null
+        }
+    }
+]

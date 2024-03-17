@@ -1,0 +1,74 @@
+{% extends "products/base.html" %}
+
+{% block content %}
+
+<style>
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full height of the viewport */
+    }
+
+    .form-box {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    input[type="text"],
+    input[type="submit"] {
+        width: 90%; /* Full width of the parent */
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #018b59;
+    }
+
+    button {
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #018b59;
+    }
+</style>
+
+<h2>Upload Payment Slip for Order {{ order.id }}</h2>
+<div class="products">
+    <div class="product">
+        <img src="https://www.qrstuff.com/images/default_qrcode.png" alt="QR Code" class="image">
+        <p>Total Price: ${{ total_price }}</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

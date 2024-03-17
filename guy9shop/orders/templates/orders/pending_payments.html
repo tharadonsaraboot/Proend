@@ -1,0 +1,17 @@
+{% extends "products/base.html" %}
+
+{% block content %}
+<h2>Pending Payments</h2>
+{% if pending_orders %}
+<ul>
+    {% for order in pending_orders %}
+    <li>Order ID: {{ order.id }}, Name: {{ order.first_name }} {{ order.last_name }}, Total: {{ order.get_total }} -
+        Status: {{ order.get_status_display }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No pending payments.</p>
+{% endif %}
+
+<a href="{% url 'product_list' %}">Back to Home</a>
+{% endblock %}
